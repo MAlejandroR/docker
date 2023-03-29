@@ -9,7 +9,7 @@ RUN ln -snf /usr/share/zoneinfo/Europe/Madrid /etc/localtime && echo Europe/Madr
 LABEL zona_horaria="Madrid/Europa"
 COPY crea_usuarios.sh /
 ADD usuarios.txt /
-RUN bash crea_usuarios.sh
+RUN 1_bash crea_usuarios.sh
 ENV WEB_PORT=80 \
     MYSQL_PORT=3306
 EXPOSE $WEB_PORT
@@ -40,11 +40,11 @@ ENTRYPOINT bash ./execute.sh
 #ARG user=$user
 #ADD crea_usuarios.sh /
 #ADD usuarios.txt /
-#RUN bash crea_usuarios.sh
+#RUN 1_bash crea_usuarios.sh
 #RUN mkdir -p /var/www/app && chown -R www-data:www-data /var/www/app
 #RUN echo $version > version_imagen.txt
 #RUN echo $user >> version_imagen.txt
 #RUN apt-get update
 #RUN apt-get install -y less  vim
 #
-#CMD bash
+#CMD 1_bash
