@@ -53,3 +53,28 @@ docker compose up -d
 ```
 Y podemos abrir el navegador para ver la aplicación desplegada. La misma la tenemos en la carpeta **[app](./3_web_1/app)**
 Comentar también que este contenedor estaría mal creado, ya que no queda claro los procesos que se están ejecutando a quién pertenecen, por lo que cuando paro el contenedor se observa que tarda tiempo den parar.
+## 5_env_command
+En este caso creamos una variable de entorno, a la que le asignamos un valor con la variable del sistema $USER
+Posteriormente le indicamos al servicio creado que visualice la variable
+Vemos la ejecución cómo se visualiza
+
+```shell
+ 5_env_command > docker compose up
+[+] Running 1/0
+ ⠿ Container container_bash  Recreated                                                                       0.0s
+Attaching to container_bash
+container_bash  | Valor de usuario oem
+container_bash exited with code 0
+➜  5_env_command git:(main) ✗ 
+```
+
+
+## 6_mysql_phpmyadmin
+Esta sí que es una práctica que vamos a usar. Creamos un contenedor para gestionar datos y dejamos los datos mapeados en una carpeta llamada mysql
+
+Por otro lado creamos un servicio para gestionar la base de datos a través de phpmyadmin
+
+Vemos que hay una variables de entorno, que si no las pongo el proceso de generación me las pide
+
+realizamos el forward del puerto 8800 para acceder al apache que tiene el servicio phpmyadmin que gestiona los datos (phpmyadmin es una app escrita en php para adminsitrar bases de datos de un gestor mysql)
+
