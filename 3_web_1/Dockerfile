@@ -10,6 +10,8 @@ LABEL zona_horaria="Madrid/Europa"
 
 ENV WEB_PORT=80
 EXPOSE $WEB_PORT
-
+#CMD service apache2 start
 COPY execute.sh /
-ENTRYPOINT bash ./execute.sh
+#ENTRYPOINT ["apachectl", "-D", "FOREGROUND"]
+ENTRYPOINT bash /execute.sh
+
