@@ -7,11 +7,11 @@ RUN apt-get update && apt install -y apache2 \
     libapache2-mod-php
 RUN ln -snf /usr/share/zoneinfo/Europe/Madrid /etc/localtime && echo Europe/Madrid > /etc/timezone
 LABEL zona_horaria="Madrid/Europa"
+LABEL maintainer="Manuel Romero"
+LABEL description="Contenedor con apache y php"
 
 ENV WEB_PORT=80
 EXPOSE $WEB_PORT
-#CMD service apache2 start
-COPY execute.sh /
-#ENTRYPOINT ["apachectl", "-D", "FOREGROUND"]
-ENTRYPOINT bash /execute.sh
+VOLUME /var/www/html
+CMD ["sh", "-c", "service apache2 start && tail -f /dev/null"]
 

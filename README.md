@@ -17,7 +17,7 @@ docker compose run bash
 ## 2_red
 Se crean dos contenedores a partir del mismo Dockerfile
 Para arrancarlos hay un pequeño script que lanza cada contenedor en una ventana independinete **gnome-terminal -x**
-Para ejecutarlo puedes hacer simplemente
+Para ejecutarlo, si estás en linux puedes hacer simplemente
 ```shell
 sh ./execute
 ```
@@ -33,6 +33,15 @@ PING 172.23.0.3 (172.23.0.3) 56(84) bytes of data.
 64 bytes from 172.23.0.3: icmp_seq=1 ttl=64 time=0.074 ms
 ****
 ```
+Si no, abre dos terminales, en cada uno ejetua el contenedor   
+```shell
+docker compose exec -ti equipo1 bash
+```
+En el otro terminal  
+```shell
+docker compose exec -ti equipo2 bash
+```
+
 ## 3_web_1
 En este caso creamos una imagen con el *Dockerfile*, donde se instala apache2 php y se establece el la hora peninsular.
 
@@ -53,6 +62,7 @@ docker compose up -d
 ```
 Y podemos abrir el navegador para ver la aplicación desplegada. La misma la tenemos en la carpeta **[app](./3_web_1/app)**
 Comentar también que este contenedor estaría mal creado, ya que no queda claro los procesos que se están ejecutando a quién pertenecen, por lo que cuando paro el contenedor se observa que tarda tiempo den parar.
+
 ## 5_env_command
 En este caso creamos una variable de entorno, a la que le asignamos un valor con la variable del sistema $USER
 Posteriormente le indicamos al servicio creado que visualice la variable
@@ -76,5 +86,6 @@ Por otro lado creamos un servicio para gestionar la base de datos a través de p
 
 Vemos que hay una variables de entorno, que si no las pongo el proceso de generación me las pide
 
-realizamos el forward del puerto 8800 para acceder al apache que tiene el servicio phpmyadmin que gestiona los datos (phpmyadmin es una app escrita en php para adminsitrar bases de datos de un gestor mysql)
+Realizamos el forward del puerto 8800 para acceder al apache que tiene el servicio phpmyadmin que gestiona los datos (phpmyadmin es una app escrita en php para adminsitrar bases de datos de un gestor mysql)
+
 
