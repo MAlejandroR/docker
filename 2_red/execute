@@ -1,6 +1,6 @@
 # En windows guardamos el fichero con extensión bat y escribimos
-Start Process docker compose run  -ti equipo1 bash
-Start Process docker compose run  -ti equipo2 bash
+Start docker compose run  -ti equipo1 bash
+Start docker compose run  -ti equipo2 bash
 # Luego lo podemos ejectuar en el terminal
 
 #En linux escribimos este otro comando

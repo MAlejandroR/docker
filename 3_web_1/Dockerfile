@@ -5,10 +5,19 @@ RUN apt-get update && apt install -y apache2 \
     less \
     php \
     libapache2-mod-php
-RUN ln -snf /usr/share/zoneinfo/Europe/Madrid /etc/localtime && echo Europe/Madrid > /etc/timezone
+RUN apt install -y\
+    mysql-client\
+    mysql-server
+RUN ln -snf /usr/share/zoneinfo/Europe/Madrid  \
+    /etc/localtime \
+    && echo Europe/Madrid > /etc/timezone
 LABEL zona_horaria="Madrid/Europa"
 LABEL maintainer="Manuel Romero"
 LABEL description="Contenedor con apache y php"
+
+RUN service apache2 start
+RUN service mysql start
+RUN apt-get install -y phpmyadmin
 
 ENV WEB_PORT=80
 EXPOSE $WEB_PORT
